@@ -19,6 +19,7 @@
       src="https://kit.fontawesome.com/c939d0e917.js"
       crossorigin="anonymous"
     ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   </head>
   <body>
     <div class="container home">
@@ -37,14 +38,16 @@
       </div>
       <div class="main__container">
         <div class="search__container">
-          <input
-            id="user-search-input"
-            type="text"
-            placeholder="Type to search ..."
-          />
-          <i class="fas fa-search fa-flip-horizontal"></i>
+          <form id="search-form" class="search__form">
+            <input
+              id="user-search-input"
+              type="text"
+              placeholder="Type to search ..."
+            />
+            <i id="search-btn" class="fas fa-search fa-flip-horizontal"></i>
+          </form>
         </div>
-        <div class="tweets-list">
+        <div class="tweets-list" id="tweets-list">
           <div class="tweet__container">
             <div class="tweet-user-info">
               <div class="tweet-user-profile"></div>
@@ -52,21 +55,117 @@
                 <div class="tweet-user-fullname">Amol Khedekar</div>
                 <!-- <div class="thunder-separator">⚡</div> -->
                 <div class="tweet-user-username">@amolkhedekar16</div>
-                <div class="tweet-date-container">10</div>
               </div>
             </div>
-            <div class="tweet-images-container"></div>
+            <div class="tweet-images-container">
+              <div class="tweet-image"></div>
+            </div>
             <div class="tweet-text-container">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit.
               Accusamus, sequi adipisci. Dolores aperiam alias porro dolorum
               animi culpa nemo adipisci eius distinctio in quae sequi iure
               doloremque, hic ea harum.
             </div>
+            <div class="tweet-date-container">10</div>
+          </div>
+          <div class="tweet__container">
+            <div class="tweet-user-info">
+              <div class="tweet-user-profile"></div>
+              <div class="tweet-user-name-container">
+                <div class="tweet-user-fullname">Amol Khedekar</div>
+                <!-- <div class="thunder-separator">⚡</div> -->
+                <div class="tweet-user-username">@amolkhedekar16</div>
+              </div>
+            </div>
+            <div class="tweet-images-container">
+              <div class="tweet-image"></div>
+              <div class="tweet-image"></div>
+              <div class="tweet-image"></div>
+              <div class="tweet-image"></div>
+            </div>
+            <div class="tweet-text-container">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              Accusamus, sequi adipisci. Dolores aperiam alias porro dolorum
+              animi culpa nemo adipisci eius distinctio in quae sequi iure
+              doloremque, hic ea harum.
+            </div>
+            <div class="tweet-date-container">10</div>
+          </div>
+          <div class="tweet__container">
+            <div class="tweet-user-info">
+              <div class="tweet-user-profile"></div>
+              <div class="tweet-user-name-container">
+                <div class="tweet-user-fullname">Amol Khedekar</div>
+                <!-- <div class="thunder-separator">⚡</div> -->
+                <div class="tweet-user-username">@amolkhedekar16</div>
+              </div>
+            </div>
+            <div class="tweet-images-container">
+              <div class="tweet-image"></div>
+            </div>
+            <div class="tweet-text-container">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              Accusamus, sequi adipisci. Dolores aperiam alias porro dolorum
+              animi culpa nemo adipisci eius distinctio in quae sequi iure
+              doloremque, hic ea harum.
+            </div>
+            <div class="tweet-date-container">10</div>
+          </div>
+          <div class="tweet__container">
+            <div class="tweet-user-info">
+              <div class="tweet-user-profile"></div>
+              <div class="tweet-user-name-container">
+                <div class="tweet-user-fullname">Amol Khedekar</div>
+                <!-- <div class="thunder-separator">⚡</div> -->
+                <div class="tweet-user-username">@amolkhedekar16</div>
+              </div>
+            </div>
+            <div class="tweet-images-container">
+              <div class="tweet-image"></div>
+            </div>
+            <div class="tweet-text-container">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              Accusamus, sequi adipisci. Dolores aperiam alias porro dolorum
+              animi culpa nemo adipisci eius distinctio in quae sequi iure
+              doloremque, hic ea harum.
+            </div>
+            <div class="tweet-date-container">10</div>
+          </div>
+          <div class="tweet__container">
+            <div class="tweet-user-info">
+              <div class="tweet-user-profile"></div>
+              <div class="tweet-user-name-container">
+                <div class="tweet-user-fullname">Amol Khedekar</div>
+                <!-- <div class="thunder-separator">⚡</div> -->
+                <div class="tweet-user-username">@amolkhedekar16</div>
+              </div>
+            </div>
+            <div class="tweet-images-container">
+              <div class="tweet-image"></div>
+            </div>
+            <div class="tweet-text-container">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              Accusamus, sequi adipisci. Dolores aperiam alias porro dolorum
+              animi culpa nemo adipisci eius distinctio in quae sequi iure
+              doloremque, hic ea harum.
+            </div>
+            <div class="tweet-date-container">10</div>
           </div>
         </div>
       </div>
       <div class="sidebar__container">
-        <div class="tweets-sidebar"></div>
+        <div class="tweets-sidebar">
+          <div class="tweets-trending">
+            <h3>What's Trending</h3>
+            <ul>
+              <li>#Coding</li>
+              <li>#JavaScript</li>
+              <li>#Python</li>
+              <li>#100DaysOfCode</li>
+              <li>#DataScience</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
     <script src="js/index.js" async defer></script>
