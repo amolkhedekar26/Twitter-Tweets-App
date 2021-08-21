@@ -178,7 +178,7 @@ ul {
   overflow: hidden;
   /* border: 1px solid #f1f1f167; */
   border-radius: 0.8em;
-  background-color: rgba(245, 245, 245, 0.137);
+  /* background-color: rgba(245, 245, 245, 0.137); */
 }
 .tweet-video-container {
   margin-top: 1rem;
@@ -188,7 +188,7 @@ ul {
   overflow: hidden;
   /* border: 1px solid #f1f1f167; */
   border-radius: 0.8em;
-  background-color: rgba(245, 245, 245, 0.137);
+  /* background-color: rgba(245, 245, 245, 0.137); */
 }
 .tweet-video-container video {
   width: 100%;
