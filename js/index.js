@@ -3,11 +3,19 @@ const BASE_URL = 'http://localhost:3000/tweets';
 /**
  * Retrive Twitter Data from API
  */
-const getTwitterData = (url) => {
+
+let nextPageUrl = null;
+
+const getTwitterData = (url, nextPage = false) => {
+  if (nextPage && nextPageUrl) {
+    url = nextPageUrl;
+  }
   fetch(url, {})
     .then((response) => response.json())
     .then((data) => {
-      buildTweets(data.statuses, data.search_metadata.next_results);
+      buildTweets(data.statuses, nextPage);
+      saveNextPage(data.search_metadata);
+      nextPageButtonVisibility(data.search_metadata);
     })
     .catch((error) => {
       console.log(error);
@@ -17,17 +25,35 @@ const getTwitterData = (url) => {
 /**
  * Save the next page data
  */
-const saveNextPage = (metadata) => {};
+const saveNextPage = (metadata) => {
+  if (metadata.next_results) {
+    nextPageUrl = `${BASE_URL}${metadata.next_results}`;
+  } else {
+    nextPageUrl = null;
+  }
+};
 
 /**
  * Handle when a user clicks on a trend
  */
-const selectTrend = (e) => {};
+const selectTrend = (e) => {
+  const query = e.target.innerText;
+  userSearchInput.value = query;
+  const encodedQuery = encodeURIComponent(query);
+  const url = `http://localhost:3000/tweets?q=${encodedQuery}&count=10`;
+  getTwitterData(url);
+};
 
 /**
  * Set the visibility of next page based on if there is data on next page
  */
-const nextPageButtonVisibility = (metadata) => {};
+const nextPageButtonVisibility = (metadata) => {
+  if (metadata.next_results) {
+    nextPageButton.style.visibility = 'visible';
+  } else {
+    nextPageButton.style.visibility = 'hidden';
+  }
+};
 
 /**
  * Build Tweets HTML based on Data from API
@@ -52,14 +78,10 @@ const buildTweets = (tweets, nextPage) => {
         </div>
       </div>`;
     if (tweet.extended_entities && tweet.extended_entities.media.length > 0) {
-      console.log(buildImages(tweet.extended_entities.media));
       twitterContent += buildImages(tweet.extended_entities.media);
       twitterContent += buildVideo(tweet.extended_entities.media);
     }
 
-    // <div class="tweet-images-container">
-    //   <div class="tweet-image"></div>
-    // </div>;
     twitterContent += `
     <div class="tweet-text-container">
         ${tweet.full_text}
@@ -68,7 +90,11 @@ const buildTweets = (tweets, nextPage) => {
     </div>
     `;
   });
-  tweetsList.innerHTML = twitterContent;
+  if (nextPage) {
+    tweetsList.insertAdjacentHTML('beforeend', twitterContent);
+  } else {
+    tweetsList.innerHTML = twitterContent;
+  }
 };
 
 /**
@@ -117,8 +143,15 @@ const buildVideo = (mediaList) => {
   return videoExist ? videoContent : '';
 };
 
+const OnNextPage = () => {
+  if (nextPageUrl) {
+    getTwitterData(nextPageUrl, true);
+  }
+};
+
+const getVideOptions = (type) => {};
 window.onload = () => {
-  // getTwitterData('http://localhost:3000/tweets?q=recent&count=10');
+  getTwitterData('http://localhost:3000/tweets?q=recent&count=10');
 };
 
 const tweetsList = document.getElementById('tweets-list');
@@ -126,6 +159,9 @@ const searchContainer = document.querySelector('.search__container');
 const searchForm = document.getElementById('search-form');
 const searchBtn = document.getElementById('search-btn');
 const userSearchInput = document.getElementById('user-search-input');
+const trendsList = document.querySelectorAll('.trend');
+const nextPageButton = document.getElementById('next-page-btn');
+const scrollToTopBtn = document.getElementById('scroll-to-top-btn');
 
 userSearchInput.addEventListener('focusin', (e) => {
   searchContainer.classList.add('search__container--active');
@@ -154,4 +190,25 @@ searchBtn.addEventListener('click', (e) => {
   const encodedQuery = encodeURIComponent(query);
   const URL = `http://localhost:3000/tweets?q=${encodedQuery}&count=10`;
   getTwitterData(URL);
+});
+
+trendsList.forEach((trend) => {
+  trend.addEventListener('click', (e) => {
+    selectTrend(e);
+  });
+});
+
+nextPageButton.addEventListener('click', (e) => {
+  OnNextPage();
+});
+
+const scrollToTop = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth',
+  });
+};
+
+scrollToTopBtn.addEventListener('click', (e) => {
+  scrollToTop();
 });

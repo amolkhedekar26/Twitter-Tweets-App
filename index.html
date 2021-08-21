@@ -19,7 +19,12 @@
       src="https://kit.fontawesome.com/c939d0e917.js"
       crossorigin="anonymous"
     ></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
+      integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
   </head>
   <body>
     <div class="container home">
@@ -152,21 +157,34 @@
             <div class="tweet-date-container">10</div>
           </div>
         </div>
+        <div class="next-page-container" id="next-page-btn">
+          <i class="fas fa-arrow-down"></i>
+        </div>
       </div>
       <div class="sidebar__container">
         <div class="tweets-sidebar">
           <div class="tweets-trending">
             <h3>What's Trending</h3>
             <ul>
-              <li>#Coding</li>
-              <li>#JavaScript</li>
-              <li>#Python</li>
-              <li>#100DaysOfCode</li>
-              <li>#DataScience</li>
+              <li class="trend">#Coding</li>
+              <li class="trend">#JavaScript</li>
+              <li class="trend">#Python</li>
+              <li class="trend">#100DaysOfCode</li>
+              <li class="trend">#DataScience</li>
             </ul>
           </div>
+          <p>" Lets explore something new and fun. Enjoy the ride! Voila ! "</p>
         </div>
       </div>
+      <footer>
+        <button
+          id="scroll-to-top-btn"
+          title="Scroll to top"
+          class="scroll-to-top-btn"
+        >
+          <i class="fas fa-arrow-up"></i>
+        </button>
+      </footer>
     </div>
     <script src="js/index.js" async defer></script>
   </body>
